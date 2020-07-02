@@ -20,6 +20,22 @@ class UsersController < ApplicationController
     # @user = User.find(user_params[:id])
   end
 
+  def login
+    
+  end
+
+  def authenticate
+    @user = User.find_by(username: params[:username])
+    if @user.nil?
+      flash.notice = 'Username not found'
+      render :login
+    else
+      session[:current_user_id] = @user.id
+      flash.notice = 'Login successful'
+      redirect_to root_path
+    end
+  end
+
   private
 
   def user_params
