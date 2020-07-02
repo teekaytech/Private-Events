@@ -1,4 +1,12 @@
 <h1>New User</h1>
-<%= form_for :user, remote true do |f| %>
-  <>
+<%= form_for @user do |f| %>
+    <p>
+    <%= f.label :username %><br/>
+      <%= f.text_field :username %>
+    </p>
+    <p>
+    <%= f.label :email %><br/>
+      <%= f.text_field :email %>
+    </p>
+    <%= f.submit :User, value: "Register" %>
 <% end %>
