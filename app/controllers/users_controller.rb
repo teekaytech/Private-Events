@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:current_user_id])
+    @user = User.includes(:created_events).find(session[:current_user_id])
   end
 
   def login
