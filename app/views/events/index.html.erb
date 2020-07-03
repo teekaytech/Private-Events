@@ -1,1 +1,16 @@
-<h2>Hello World!</h2>
+<h2>All Events</h2>
+
+<% @events.each do |event|%>
+  <div>
+    <p>Event created by: <%= event.creator.username%></p>
+    <p>
+      Location: <%= event.location%>
+    </p>
+    <p>
+      Date: <%= event.event_date%>
+    </p>
+    <p>
+      Description: <%= event.description%>
+    </p>
+  </div>
+<%end%>
