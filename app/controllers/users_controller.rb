@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def index
     @users = User.all
   end
@@ -11,8 +10,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:current_user_id] = @user.id   
-      redirect_to root_url, notice: 'Logged in!'   
+      session[:current_user_id] = @user.id
+      redirect_to root_url, notice: 'Logged in!'
     else
       render :new
     end
@@ -42,9 +41,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @_current_user = session[:current_user_id] = nil  
-    redirect_to root_url  
-  end  
+    @_current_user = session[:current_user_id] = nil
+    redirect_to root_url
+  end
 
   private
 
