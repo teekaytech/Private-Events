@@ -8,3 +8,11 @@
     </li>
   </ul>
 <%end%>
+
+<h2>Events attended by User</h2>
+<ul>
+  <% @user.attended_events.each do |event|%>
+    <li>Location: <%= event.location %> </li>
+    <li>Date: <%= event.event_date%> </li>
+  <%end%>
+</ul>

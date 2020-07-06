@@ -23,6 +23,18 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def attend
+    event = Event.find(params[:id])
+    a = UsersEvent.new
+    a.user_id = current_user.id
+    a.event_id = event.id
+    if a.save
+      redirect_to events_path, notice: 'You have successfully registered for the event'
+    else
+      render :show, notice: 'Unable to register you for the event'
+    end
+  end
+
   private
 
   def event_params

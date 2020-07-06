@@ -5,3 +5,13 @@
   <%= @event.event_date%>
   <%= @event.description%>
 </p>
+<div>
+  <h4>List of attendees</h4>
+  <ul>
+    <%@event.attendees.each do |attendee|%>
+      <li><%= attendee.username%></li>
+    <%end%>
+  </ul>
+</div>
+
+<%= link_to "Attend Event", attend_path(@event), method: :post%>
