@@ -16,3 +16,15 @@
     <li>Date: <%= event.event_date%> </li>
   <%end%>
 </ul>
+
+<h2>Past Events</h2>
+<% @past_events.each do |event|%>
+  <li>Location: <%= event.location %> </li>
+  <li>Date: <%= event.event_date%> </li>
+<%end%>
+
+<h2>Upcoming Events</h2>
+<% @upcoming_events.each do |event|%>
+  <li>Location: <%= event.location %> </li>
+  <li>Date: <%= event.event_date%> </li>
+<%end%>

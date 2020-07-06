@@ -20,6 +20,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.includes(:created_events).find(params[:id])
+    current_user = @user.attended_events
+    @past_events = current_user.previous_events
+    @upcoming_events = current_user.upcoming_events
   end
 
   def login
@@ -38,7 +41,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy   
+  def destroy
     @_current_user = session[:current_user_id] = nil  
     redirect_to root_url  
   end  
