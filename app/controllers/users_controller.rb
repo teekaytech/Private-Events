@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     @users = User.all
   end
@@ -10,7 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:current_user_id] = user.id   
+      session[:current_user_id] = @user.id   
       redirect_to root_url, notice: 'Logged in!'   
     else
       render :new
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:created_events).find(session[:current_user_id])
+    @user = User.includes(:created_events).find(params[:id])
   end
 
   def login
@@ -33,9 +34,14 @@ class UsersController < ApplicationController
     else
       session[:current_user_id] = @user.id
       flash.notice = 'Login successful'
-      redirect_to root_path
+      redirect_to users_path
     end
   end
+
+  def destroy   
+    @_current_user = session[:current_user_id] = nil  
+    redirect_to root_url  
+  end  
 
   private
 
