@@ -1,12 +1,20 @@
-<h1>New User</h1>
-<%= form_for @user do |f| %>
-    <p>
-    <%= f.label :username %><br/>
-      <%= f.text_field :username %>
-    </p>
-    <p>
-    <%= f.label :email %><br/>
-      <%= f.text_field :email %>
-    </p>
-    <%= f.submit :User, value: "Register" %>
-<% end %>
+<div class="pt-3 w-25 m-auto">
+  <h3>Create New User</h3>
+  <%= form_for @user do |f| %>
+      
+      <div class="form-group">
+        <%= f.label :username %><br/>
+        <%= f.text_field :username, class: 'form-control', autofocus: true  %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email %><br/>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit :User, value: "Register", class: 'btn btn-primary'%>
+      </div>
+
+  <% end %>
+</div>

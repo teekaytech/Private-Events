@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user, only: [:attend, :new]
 
   def index
     @past_events = Event.previous_events

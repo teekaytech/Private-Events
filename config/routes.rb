@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :users, only: [:index, :new, :create, :show, :destroy]
-  get '/login', to: 'users#login'
-  post '/authenticate', to: 'users#authenticate'
-  root 'users#login'
+  resources :users, only: [:new, :create, :show, :destroy]
+  get '/login', to: 'users#login', as: 'login'
+  post '/authenticate', to: 'application#authenticate'
+  root 'events#index'
 
   resources :events, only: [:index, :new, :create, :show]
   post 'events/:id/attend', to: 'events#attend', as: 'attend'

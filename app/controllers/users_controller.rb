@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-  def index
-    @users = User.all
-  end
+  before_action :authenticate_user, except: [:login, :new]
 
   def new
     @user = User.new
@@ -26,18 +24,6 @@ class UsersController < ApplicationController
 
   def login
     
-  end
-
-  def authenticate
-    @user = User.find_by(username: params[:username])
-    if @user.nil?
-      flash.notice = 'Username not found'
-      render :login
-    else
-      session[:current_user_id] = @user.id
-      flash.notice = 'Login successful'
-      redirect_to user_path(@user)
-    end
   end
 
   def destroy
