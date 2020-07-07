@@ -1,30 +1,80 @@
-<h2>Events created by User</h2>
+<div class="row mx-2">
 
-<% @user.created_events.each do |event|%>
-  <ul>
-    <li>
-      Date: <%= event.event_date%>
-      Location: <%= event.location%>
-    </li>
-  </ul>
-<%end%>
+  <div class="col-6">
+    <h2 class="text-center">Events created by <%= @user.username %></h2>
 
-<h2>Events attended by User</h2>
-<ul>
-  <% @user.attended_events.each do |event|%>
-    <li>Location: <%= event.location %> </li>
-    <li>Date: <%= event.event_date%> </li>
-  <%end%>
-</ul>
+    <div class="jumbotron m-auto">
+      <% @user.created_events.each do |event|%>
+          <p class="lead">
+            <%= event.description%>
+          </p>
+          <p>
+            Location: <%= event.location %>
+            Date: <%= event.event_date.strftime("%m-%e-%y %H:%M") %>
+          </p>
+          <hr class="my-4">
+      <% end %>
+    </div>
+  </div>
 
-<h2>Past Events</h2>
-<% @past_events.each do |event|%>
-  <li>Location: <%= event.location %> </li>
-  <li>Date: <%= event.event_date%> </li>
-<%end%>
+  <div class="col-6">
 
-<h2>Upcoming Events</h2>
-<% @upcoming_events.each do |event|%>
-  <li>Location: <%= event.location %> </li>
-  <li>Date: <%= event.event_date%> </li>
-<%end%>
+    <% if @upcoming_events.count > 0 %>
+      <div>
+        <h2>Upcoming Events</h2>
+        <% sn = 1%>
+        <% @upcoming_events.each do |event|%>
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Location</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= sn %></td>
+                <td><%= event.location %></td>
+                <td><%= event.event_date.strftime("%m-%e-%y %H:%M")%></td>
+              </tr>
+            </tbody>
+          </table> 
+          <% sn += 1%> 
+        <%end%>
+      </div>
+    <% else %>
+      <h4>You do not have any upcoming event.</h4>
+    <% end %>
+    
+
+    <% if @past_events.count > 0%>
+      <div>
+        <h2>Past Events</h2>
+        <% sn = 1%>
+        <% @past_events.each do |event|%>
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Location</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= sn %></td>
+                <td><%= event.location %></td>
+                <td><%= event.event_date.strftime("%m-%e-%y %H:%M")%></td>
+              </tr>
+            </tbody>
+          </table>  
+          <% sn += 1%>
+        <%end%>
+      </div>
+    <% else %>
+      <h4>You have not attended any event yet.</h4>
+    <% end %>
+  </div>
+
+</div>

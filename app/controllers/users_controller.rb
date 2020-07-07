@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     else
       session[:current_user_id] = @user.id
       flash.notice = 'Login successful'
-      redirect_to events_path
+      redirect_to user_path(@user)
     end
   end
 
