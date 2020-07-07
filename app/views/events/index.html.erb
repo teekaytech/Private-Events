@@ -17,3 +17,15 @@
     </p>
   </div>
 <%end%>
+
+<h4>Past Events</h4>
+<% @past_events.each do |event|%>
+  <li>Location: <%= event.location %> </li>
+  <li>Date: <%= event.event_date%> </li>
+<%end%>
+
+<h4>Upcoming Events</h4>
+<% @upcoming_events.each do |event|%>
+  <li>Location: <%= event.location %> </li>
+  <li>Date: <%= event.event_date%> </li>
+<%end%>
