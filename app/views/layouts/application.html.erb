@@ -6,39 +6,31 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li>
-            <%= link_to "Private Events", root_path%>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item pr-3"><%= link_to "Private Events", root_path, class: "nav_link text-decoration-none font-weight-bolder"%></li>
+        <% if current_user %>
+          <li class="nav-item">
+            <%= link_to "Create an Event", new_event_path, class: "nav_link text-decoration-none"%>
           </li>
-          <% if current_user %>
-            <li>
-              <%= link_to "Create an Event", new_event_path%>
-            </li>
-          <% end %>
-        </ul>
-        
-        <ul class="nav navbar-nav navbar-right">
-          <% if current_user%>
-            <li><%= link_to "Logout", user_path(current_user), method: :delete%></li>
-          <%else%>
-            <li><%= link_to "Login", root_path%></li> 
-            <li><%= link_to "Sign Up", new_user_path%></li>
-          <%end%>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+        <% end %>
+      </ul>
+      <ul class="navbar-nav">
+        <% if current_user%>
+          <li class="nav-item"><%= link_to "Logout", user_path(current_user), method: :delete, class: "nav_link" %></li>
+        <%else%>
+          <li class="nav-item pr-3"><%= link_to "Login", root_path, class: "nav_link text-decoration-none"%></li> 
+          <li class="nav-item"><%= link_to "Sign Up", new_user_path, class: "nav_link text-decoration-none"%></li>
+        <%end%>
+      </ul>
+    </div>
   </nav>
-
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>
