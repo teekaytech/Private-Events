@@ -1,31 +1,24 @@
-<h2>All Events</h2>
-
-<% @events.each do |event|%>
-  <div>
-    <p>Event created by: <%= event.creator.username%></p>
-    <p>
-      Location: <%= event.location%>
-    </p>
-    <p>
-      Date: <%= event.event_date%>
-    </p>
-    <p>
-      Description: <%= event.description%>
-    </p>
-    <p>
-      <%= link_to "See Event", event_path(event)%>
-    </p>
-  </div>
-<%end%>
-
-<h4>Past Events</h4>
-<% @past_events.each do |event|%>
-  <li>Location: <%= event.location %> </li>
-  <li>Date: <%= event.event_date%> </li>
-<%end%>
-
-<h4>Upcoming Events</h4>
-<% @upcoming_events.each do |event|%>
-  <li>Location: <%= event.location %> </li>
-  <li>Date: <%= event.event_date%> </li>
-<%end%>
+<div class="row mt-4 mx-2">
+  <section class="col-6">
+    <h5>Past Events</h5>
+    <% @past_events.each do |event|%>
+      <div class="jumbotron py-3">
+        <p class="lead">Location: <%= event.location %></p>
+        <hr class="my-4">
+        <p>Date: <%= event.event_date.strftime("%m-%e-%y %H:%M") %></p>
+        <%= link_to "See Event", event_path(event), class: 'btn btn-primary' %>
+      </div>
+    <%end%>
+  </section>
+  <section class="col-6">
+    <h5>Upcoming Events</h5>
+    <% @upcoming_events.each do |event|%>
+      <div class="jumbotron py-3">
+        <p class="lead">Location: <%= event.location %></p>
+        <hr class="my-4">
+        <p>Date: <%= event.event_date.strftime("%m-%e-%y %H:%M") %></p>
+        <%= link_to "See Event", event_path(event), class: 'btn btn-primary' %>
+      </div>
+    <%end%>
+  </section>
+</div>
