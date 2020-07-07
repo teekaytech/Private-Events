@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     @user = User.find_by(username: params[:username])
     if @user.nil?
       flash.notice = 'Username not found'
-      render :login
+      redirect_to login_path
     else
       session[:current_user_id] = @user.id
       flash.notice = 'Login successful'

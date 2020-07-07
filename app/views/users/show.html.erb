@@ -23,15 +23,16 @@
       <div>
         <h2>Upcoming Events</h2>
         <% sn = 1%>
-        <% @upcoming_events.each do |event|%>
-          <table class="table">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Location</th>
-                <th scope="col">Date</th>
-              </tr>
-            </thead>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Location</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <% @upcoming_events.each do |event|%>
+        
             <tbody>
               <tr>
                 <td><%= sn %></td>
@@ -39,9 +40,10 @@
                 <td><%= event.event_date.strftime("%m-%e-%y %H:%M")%></td>
               </tr>
             </tbody>
-          </table> 
-          <% sn += 1%> 
-        <%end%>
+            <% sn += 1%> 
+          <%end%>
+        </table> 
+          
       </div>
     <% else %>
       <h4>You do not have any upcoming event.</h4>
@@ -52,15 +54,16 @@
       <div>
         <h2>Past Events</h2>
         <% sn = 1%>
-        <% @past_events.each do |event|%>
-          <table class="table">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Location</th>
-                <th scope="col">Date</th>
-              </tr>
-            </thead>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Location</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <% @past_events.each do |event|%>
+          
             <tbody>
               <tr>
                 <td><%= sn %></td>
@@ -68,9 +71,9 @@
                 <td><%= event.event_date.strftime("%m-%e-%y %H:%M")%></td>
               </tr>
             </tbody>
-          </table>  
-          <% sn += 1%>
-        <%end%>
+            <% sn += 1%>
+          <%end%>
+        </table>   
       </div>
     <% else %>
       <h4>You have not attended any event yet.</h4>

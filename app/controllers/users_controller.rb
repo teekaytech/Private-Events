@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user, except: [:login, :new]
+  before_action :authenticate_user, except: [:login, :new, :create]
 
   def new
     @user = User.new
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:current_user_id] = @user.id
-      redirect_to root_url, notice: 'Logged in!'
+      redirect_to root_path, notice: 'Logged in!'
     else
       render :new
     end

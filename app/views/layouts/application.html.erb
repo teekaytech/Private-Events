@@ -23,7 +23,8 @@
       </ul>
       <ul class="navbar-nav">
         <% if current_user%>
-          <li class="nav-item"><%= link_to "Logout", user_path(current_user), method: :delete, class: "nav_link" %></li>
+          <li class="nav-item pr-3"><%= link_to "Logout", user_path(current_user), method: :delete, class: "nav_link" %></li>
+          <li class="nav-item"><%= link_to "User Page", user_path(current_user), class: "nav_link" %></li>
         <%else%>
           <li class="nav-item pr-3"><%= link_to "Login", login_path, class: "nav_link text-decoration-none"%></li> 
           <li class="nav-item"><%= link_to "Sign Up", new_user_path, class: "nav_link text-decoration-none"%></li>
