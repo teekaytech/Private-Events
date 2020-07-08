@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user, except: [:login, :new, :create]
+  before_action :authenticate_user, except: %i[login new create]
 
   def new
     @user = User.new
@@ -22,9 +22,7 @@ class UsersController < ApplicationController
     @upcoming_events = current_user.upcoming_events
   end
 
-  def login
-    
-  end
+  def login; end
 
   def destroy
     @_current_user = session[:current_user_id] = nil
@@ -34,6 +32,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit([:username, :email, :id])
+    params.require(:user).permit(%i[username email id])
   end
 end

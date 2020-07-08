@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user, only: [:attend, :new]
+  before_action :authenticate_user, only: %i[attend new]
 
   def index
     @past_events = Event.previous_events
@@ -15,7 +15,7 @@ class EventsController < ApplicationController
     @event = user.created_events.build(event_params)
     pp @event
     if @event.save
-      redirect_to event_path(@event), notice: 'Event Created successfully!' 
+      redirect_to event_path(@event), notice: 'Event Created successfully!'
     else
       render :new
     end
@@ -27,7 +27,7 @@ class EventsController < ApplicationController
 
   def attend
     event = Event.find(params[:id])
-    event_to_attend = UsersEvent.where("user_id = ? AND event_id = ?", current_user.id, event.id) 
+    event_to_attend = UsersEvent.where('user_id = ? AND event_id = ?', current_user.id, event.id)
     pp "------------#{event_to_attend}------------"
     if event_to_attend.count <= 0
       a = UsersEvent.new
@@ -46,6 +46,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit([:location, :event_date, :description, :user_id])
+    params.require(:event).permit(%i[location event_date description user_id])
   end
 end
