@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  subject { described_class.new(user_id: 1, location: 'Abuja', event_date: DateTime.now - 1.week, description: 'It is an avenue to mingle together') }
-
-  before { subject.save }
-  # it 'is valid with valid attributes' do
-  #   expect(subject).to be_valid
-  # end
+  let(:user) {User.create(username: "john", email: "john@john.com")}
+  subject { described_class.create(user_id: user.id, location: 'Abuja', event_date: DateTime.now - 1.week, description: 'It is an avenue to mingle together') }
+  
+  it 'is valid with valid attributes' do
+    expect(subject).to be_valid
+  end
 
   it 'is invalid when location is absent' do
     subject.location = nil
