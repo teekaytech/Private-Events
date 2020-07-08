@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  let(:user) {User.create(username: "john", email: "john@john.com")}
+  let(:user) { User.create(username: 'john', email: 'john@john.com') }
   subject { described_class.create(user_id: user.id, location: 'Abuja', event_date: DateTime.now - 1.week, description: 'It is an avenue to mingle together') }
-  
+
   it 'is valid with valid attributes' do
     expect(subject).to be_valid
   end
