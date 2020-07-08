@@ -18,9 +18,9 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user
-    if current_user.nil?
-      flash.notice = 'You need to login'
-      redirect_to login_path
-    end
+    return unless current_user.nil?
+
+    flash.notice = 'You need to login'
+    redirect_to login_path
   end
 end

@@ -10,7 +10,8 @@ RSpec.describe 'events_controller', type: :system do
       visit login_path
       fill_in :username, with: 'creator'
       click_button('commit')
-      @event = Event.create(user_id: @user.id, location: 'Abuja', event_date: Time.now + 1.week, description: 'It is a good day')
+      @event = Event.create(user_id: @user.id, location: 'Abuja',
+                            event_date: Time.now + 1.week, description: 'It is a good day')
     end
     it 'creates an event' do
       visit new_event_path
