@@ -1,8 +1,10 @@
 # Private Events
 
-In this project, we will built an application named Private Events that behaves similar to Eventbrite. The main goal is to put in practice the main concepts of Associations in rails.
+In this project, we built an application named Private Events that behaves similar to Eventbrite. The main goal is to put in practice the main concepts of Associations in rails.
+
 
 ![screenshot](/app/assets/images/screenshot.png)
+
 
 ## Built with
   * Ruby on Rails
