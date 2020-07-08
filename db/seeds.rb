@@ -10,12 +10,6 @@ Event.destroy_all
 User.destroy_all
 
 10.times do |index|
-  user = User.create!(username: Faker::Name.name, email: Faker::Internet.email)
-  Event.create!(user_id: user.id, location: Faker::Address.full_address, event_date: Time.now - (5 - index).week, description: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4) )
+  user = User.create!(username: Faker::Twitter.screen_name, email: Faker::Internet.email)
+  Event.create!(user_id: user.id, location: Faker::Address.full_address, event_date: Time.now - (4 - index).week, description: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4))
 end
-
-
-
-
-
-

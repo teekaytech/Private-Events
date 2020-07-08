@@ -1,7 +1,7 @@
-<div class="row mx-2">
+<div class="row mx-2 pt-5">
 
   <div class="col-6">
-    <h2 class="text-center">Events created by <%= @user.username %></h2>
+    <h5 class="font-weight-bolder">Events created by <%= @user.username %></h5>
 
     <div class="jumbotron m-auto">
       <% @user.created_events.each do |event|%>
@@ -21,7 +21,8 @@
 
     <% if @upcoming_events.count > 0 %>
       <div>
-        <h2>Upcoming Events</h2>
+      <h5 class="font-weight-bolder">Upcoming Events</h5>
+        <h2></h2>
         <% sn = 1%>
         <table class="table">
           <thead class="thead-dark">
@@ -46,13 +47,12 @@
           
       </div>
     <% else %>
-      <h4>You do not have any upcoming event.</h4>
+      <h5 class="font-weight-bold pb-2"><em></em>You do not have any upcoming event.</h5>
     <% end %>
     
-
     <% if @past_events.count > 0%>
       <div>
-        <h2>Past Events</h2>
+        <h5 class="font-weight-bolder"><em></em>Past Events</h5>
         <% sn = 1%>
         <table class="table">
           <thead class="thead-dark">
@@ -76,7 +76,7 @@
         </table>   
       </div>
     <% else %>
-      <h4>You have not attended any event yet.</h4>
+      <h5 class="font-weight-bold pb-2"><em></em>You have not attended any event yet.</h5>
     <% end %>
   </div>
 
