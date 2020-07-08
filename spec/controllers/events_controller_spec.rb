@@ -5,7 +5,7 @@ RSpec.describe 'events_controller', type: :system do
     @user = User.create(username: 'creator', email: 'taofeek@gmail.com')
   end
 
-  describe 'create event' do
+  describe 'events management' do
     before :each do
       visit login_path
       fill_in :username, with: 'creator'

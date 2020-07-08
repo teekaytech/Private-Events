@@ -1,6 +1,6 @@
 <div class="row mt-4 mx-2">
   <section class="col-6">
-    <h5>Past Events</h5>
+    <h5 class="font-weight-bolder">Past Events</h5>
     <% @past_events.each do |event|%>
       <div class="jumbotron py-3">
         <p class="lead">Location: <%= event.location %></p>
@@ -11,7 +11,7 @@
     <%end%>
   </section>
   <section class="col-6">
-    <h5>Upcoming Events</h5>
+    <h5 class="font-weight-bolder">Upcoming Events</h5>
     <% @upcoming_events.each do |event|%>
       <div class="jumbotron py-3">
         <p class="lead">Location: <%= event.location %></p>
