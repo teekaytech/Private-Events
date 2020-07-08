@@ -16,4 +16,10 @@ RSpec.describe User, type: :model do
     subject.email = nil
     expect(subject).to be_valid
   end
+
+  describe 'Associations' do
+    it { should have_many(:created_events).class_name('Event') }
+    it { should have_many(:attended_events) }
+    it { should have_many(:users_events) }
+  end
 end
