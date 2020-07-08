@@ -28,7 +28,6 @@ class EventsController < ApplicationController
   def attend
     event = Event.find(params[:id])
     event_to_attend = UsersEvent.where('user_id = ? AND event_id = ?', current_user.id, event.id)
-    pp "------------#{event_to_attend}------------"
     if event_to_attend.count <= 0
       a = UsersEvent.new
       a.user_id = current_user.id
