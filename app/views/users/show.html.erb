@@ -1,10 +1,15 @@
 <div class="row mx-2 pt-5">
-
+  
   <div class="col-6">
     <h5 class="font-weight-bolder">Events created by <%= @user.username %></h5>
 
     <div class="jumbotron m-auto">
-      <% @user.created_events.each do |event|%>
+      <% if @user_created_events.count.zero?%>
+        <p class="lead">
+            You haven't created any event.
+        </p>
+      <% end %>
+      <% @user_created_events.each do |event|%>
           <p class="lead">
             <%= event.description%>
           </p>
