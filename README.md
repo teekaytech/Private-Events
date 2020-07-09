@@ -44,6 +44,9 @@ After cloning on your computer, open the folder using your terminal/command prom
 
 Signup a new user to test the app.
 
+### Running RSpec and Capybara Test Cases
+On the terminal, run `rspec` command to execute the test cases.
+Please note that this integration testing (Capybara) works well with Chrome browser.
 ## Authors
 
 👤 **Taofeek Olalere**
