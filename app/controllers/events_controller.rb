@@ -13,11 +13,11 @@ class EventsController < ApplicationController
   def create
     user = User.find(session[:current_user_id])
     @event = user.created_events.build(event_params)
-    pp @event
     if @event.save
       redirect_to event_path(@event), notice: 'Event Created successfully!'
     else
-      render :new
+      flash.notice = 'Please all fields must be filled'
+      render :new 
     end
   end
 
@@ -40,6 +40,7 @@ class EventsController < ApplicationController
     else
       redirect_to event_path(event), notice: 'You have already registered for this event!'
     end
+    
   end
 
   private
