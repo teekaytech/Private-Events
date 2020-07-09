@@ -17,7 +17,7 @@ class EventsController < ApplicationController
       redirect_to event_path(@event), notice: 'Event Created successfully!'
     else
       flash.notice = 'Please all fields must be filled'
-      render :new 
+      render :new
     end
   end
 

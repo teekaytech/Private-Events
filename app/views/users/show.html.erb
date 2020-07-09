@@ -1,7 +1,7 @@
 <div class="row mx-2 pt-5">
   
   <div class="col-6">
-    <h5 class="font-weight-bolder">Events created by <%= @user.username %></h5>
+    <h5 class="font-weight-bolder">Events created by <%= current_user.username %></h5>
 
     <div class="jumbotron m-auto">
       <% if @user_created_events.count.zero?%>
