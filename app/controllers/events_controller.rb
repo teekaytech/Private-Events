@@ -27,20 +27,16 @@ class EventsController < ApplicationController
 
   def attend
     event = Event.find(params[:id])
-    event_to_attend = UsersEvent.where('user_id = ? AND event_id = ?', current_user.id, event.id)
-    if event_to_attend.count <= 0
-      a = UsersEvent.new
-      a.user_id = current_user.id
-      a.event_id = event.id
+    if current_user.attended_events.exists?(params[:id])
+      redirect_to event_path(event), notice: 'You have already registered for this event!'
+    else
+      a = current_user.users_events.build(event_id: params[:id])
       if a.save
         redirect_to events_path, notice: 'You have successfully registered for the event'
       else
         render :show, notice: 'Unable to register you for the event'
       end
-    else
-      redirect_to event_path(event), notice: 'You have already registered for this event!'
     end
-    
   end
 
   private
