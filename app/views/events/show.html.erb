@@ -1,0 +1,30 @@
+<div class="row mx-2 pt-5">
+  <div class="col-8">
+    <div class="jumbotron px-5">
+      <h4 class="mb-3"><em>Event created by <%= @event.creator.username%></em></h4>
+      <p class="lead"><%= @event.description%></p>
+      <hr class="my-4">
+      <p>Venue: <%= @event.location%><br/>Date: <%= @event.event_date%></p>
+      <%= link_to "Attend Event", attend_path(@event), method: :post, class: 'btn btn-primary'%>
+    </div>
+  </div>
+  <div class="col-4">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Attendee</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% sn = 1 %>
+      <% @event.attendees.each do |attendee|%>
+        <tr>
+          <td><%= sn %></td>
+          <td><%= attendee.username %></td>
+          <% sn += 1 %>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>  
+</div>

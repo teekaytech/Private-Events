@@ -1,0 +1,25 @@
+<div class="pt-5 w-25 m-auto">
+  <h3>Create new event</h3>
+  <%= form_for @event do |f| %>
+      
+      <div class="form-group">
+        <%= f.label :location %><br/>
+        <%= f.text_field :location, class: 'form-control', autofocus: true  %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :date %><br/>
+        <%= f.datetime_local_field :event_date, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :description %><br/>
+        <%= f.text_area :description, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit :Event, value: "Create Event", class: 'btn btn-primary'%>
+      </div>
+
+  <% end %>
+</div>

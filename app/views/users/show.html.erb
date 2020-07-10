@@ -1,0 +1,88 @@
+<div class="row mx-2 pt-5">
+  
+  <div class="col-6">
+    <h5 class="font-weight-bolder">Events created by <%= current_user.username %></h5>
+
+    <div class="jumbotron m-auto">
+      <% if @user_created_events.count.zero?%>
+        <p class="lead">
+            You haven't created any event.
+        </p>
+      <% end %>
+      <% @user_created_events.each do |event|%>
+          <p class="lead">
+            <%= event.description%>
+          </p>
+          <p>
+            Location: <%= event.location %>
+            Date: <%= event.event_date.strftime("%m-%e-%y %H:%M") %>
+          </p>
+          <hr class="my-4">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-6">
+
+    <% if @upcoming_events.count > 0 %>
+      <div>
+      <h5 class="font-weight-bolder">Upcoming Events</h5>
+        <h2></h2>
+        <% sn = 1%>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Location</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <% @upcoming_events.each do |event|%>
+        
+            <tbody>
+              <tr>
+                <td><%= sn %></td>
+                <td><%= event.location %></td>
+                <td><%= event.event_date.strftime("%m-%e-%y %H:%M")%></td>
+              </tr>
+            </tbody>
+            <% sn += 1%> 
+          <%end%>
+        </table> 
+          
+      </div>
+    <% else %>
+      <h5 class="font-weight-bold pb-2"><em></em>You do not have any upcoming event.</h5>
+    <% end %>
+    
+    <% if @past_events.count > 0%>
+      <div>
+        <h5 class="font-weight-bolder"><em></em>Past Events</h5>
+        <% sn = 1%>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Location</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <% @past_events.each do |event|%>
+          
+            <tbody>
+              <tr>
+                <td><%= sn %></td>
+                <td><%= event.location %></td>
+                <td><%= event.event_date.strftime("%m-%e-%y %H:%M")%></td>
+              </tr>
+            </tbody>
+            <% sn += 1%>
+          <%end%>
+        </table>   
+      </div>
+    <% else %>
+      <h5 class="font-weight-bold pb-2"><em></em>You have not attended any event yet.</h5>
+    <% end %>
+  </div>
+
+</div>
